@@ -1,0 +1,33 @@
+<% # Full messages with pre-pulated fields %>
+
+<% if @song.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@song.errors.count, "error") %>
+      prohibited this song from being saved:
+    </h2>
+
+    <ul>
+    <% @song.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% # FormBuilder prefill existing object data %>
+<% # Wrap tag in a div with an error class if the field has failed validation %>
+
+<%= form_for @song do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+  <%= f.label :released %>
+  <%= f.check_box :released %>
+  <%= f.label :release_year %>
+  <%= f.number_field :release_year %><br>
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name %><br>
+  <%= f.label :genre %>
+  <%= f.text_field :genre %><br>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,26 @@
+<table style="width: 100%">
+  <thead>  
+    <tr>
+      <th>Title</th>
+      <th>Released?</th>
+      <th>Release Year</th>
+      <th>Artist Name</th>
+      <th>Genre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <div class="song">
+          <th><%= song.title %></th>
+          <td><%= song.released %></td>
+          <td><%= song.release_year %></td>
+          <td><%= song.artist_name %></td>
+          <td><%= song.genre %></td>
+          <td><%= link_to "Delete", song, method: :delete, data: { confirm: "Really?" } %></td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
